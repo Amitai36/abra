@@ -1,11 +1,12 @@
-import React, { useState } from "react";
 import Map from "@arcgis/core/Map";
-import MapView from "@arcgis/core/views/MapView.js";
+import { Grid } from "@mui/material";
+import React, { useState } from "react";
+import MapView from "@arcgis/core/views/MapView";
+
+import Chart from "./Chart";
 import "../assets/esri/css/main.css"
 import "../assets/esri/css/view.css"
-import { Grid } from "@mui/material";
-import Chart from "./Chart";
-import {typeOption} from "../modules/zodSchema"
+import { typeOption } from "../modules/zodSchema"
 
 
 function MapComponent() {
@@ -27,7 +28,7 @@ function MapComponent() {
     const select = document.createElement("select");
     select.setAttribute("class", "esri-widget esri-select");
     select.setAttribute("style", "width: 175px; font-family: 'Avenir Next W00'; font-size: 1em");
-    ["all",...typeOption].forEach((p) => {
+    ["all", ...typeOption].forEach((p) => {
       const option = document.createElement("option");
       option.value = p;
       option.innerHTML = p;
@@ -37,14 +38,13 @@ function MapComponent() {
     view.ui.add(select, "top-right");
 
     view.on("click", (event) => {
-      console.log(event)
-      setCoord({ x: event.x, y: event.y })
+      setCoord({ x: event.mapPoint.longitude, y: event.mapPoint.latitude })
     })
   }, []);
 
   return (
     <Grid container height={"100%"}>
-      <Grid xs={coord ? 6 : 12}  item height={"100%"}>
+      <Grid xs={coord ? 6 : 12} item height={"100%"}>
         <div
           id="mapDiv"
           style={{ height: "100%", width: "100%", gridArea: "1" }}
