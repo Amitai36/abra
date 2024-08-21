@@ -54,6 +54,7 @@ function PlaceForm(props:PlaceFormProps) {
                                 formColor={"info"}
                                 lable="Select type"
                                 option={optionType}
+                                defaultValue={optionType[0]}
                             />
                         )}
                     />

@@ -26,7 +26,6 @@ function MapComponent() {
   const [displayAddress, setDisplayAddress] = useState('')
   const [filtering, setFiltering] = useState<FilteringType>("all")
   const { data, refetch, isLoading } = useGetPlace({ filter: filtering })
-  console.log(data)
   //save x, y hen user click on the map
   const [coord, setCoord] = useState<{ x: number, y: number }>()
   //create a map and handle when user clivk on the map

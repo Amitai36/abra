@@ -15,7 +15,9 @@ function Home() {
             <AppBar sx={{ height: "10%" }} position="static">
                 <Toolbar sx={{ alignItems: "center" }}>
                     <Typography variant="h4">Configuration Manager</Typography>
-                    <IconButton sx={{ right: 0, position: "absolute" }} onClick={() => setOpenAddPlace(prev => !prev)}><Add /></IconButton>
+                    <IconButton sx={{ right: 0, position: "absolute" , background:"#fff"}} onClick={() => setOpenAddPlace(prev => !prev)}>
+                        <Add />
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <div style={{ flexGrow: 1, overflow: 'auto', padding: 2 }}>
