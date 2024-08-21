@@ -52,6 +52,7 @@ function MapComponent() {
         resultGraphicEnabled: true,
       });
       searchWidget.search(displayAddress)
+      //habdle on click by the map
       view.on("click", (event) => {
         setCoord({ x: event.mapPoint.longitude, y: event.mapPoint.latitude })
       })
@@ -71,13 +72,13 @@ function MapComponent() {
         />
 
       </Grid>
-       <Grid xs={2} item height={"100%"}>
+       <Grid xs={3} item height={"100%"}>
         {(isLoading)?
         <Typography>Loading</Typography>:
         data&&
         <DisplayList setDisplayAddress={setDisplayAddress} items={data} />}
       </Grid>
-      {coord && <Grid item xs={4} height={"100%"}>
+      {coord && <Grid item xs={3} width={"100%"} height={"100%"}>
         <Chart x={coord.x} y={coord.y} />
       </Grid>
       }    </Grid>

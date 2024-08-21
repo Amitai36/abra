@@ -44,6 +44,7 @@ function Chart(props: ChartProps) {
                         type:"linear"
                     },
                 }}
+                style={{height:"100%", width:"100%"}}
             />
         </div>
     )
