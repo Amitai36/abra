@@ -1,6 +1,5 @@
 import Plot from "react-plotly.js"
 
-import { Weather } from "../api/types"
 import { useGetWeather } from "../api/usePlace"
 import { Typography } from "@mui/material"
 
@@ -30,18 +29,19 @@ function Chart(props: ChartProps) {
                         x: [new Date()],
                         y: [data.main.pressure],
                         mode: "markers",
-                        type: "scatter",
+                        type: "bar",
                         name: "weather chart",
                     },
                 ]}
                 layout={{
-                    title: "Growth Rate in Children",
+                    title: "time on pressure",
                     xaxis: {
                         title: "Date",
                         type: "date"
                     },
                     yaxis: {
                         title: "pressure",
+                        type:"linear"
                     },
                 }}
             />
