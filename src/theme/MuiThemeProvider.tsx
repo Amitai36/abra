@@ -9,7 +9,10 @@ import {
     children: ReactNode;
   }
   
+
+  //create mui thene general
   function MuiProviderTheme(props: MuiProviderThemeProps) {
+    //save chashing
     const theme = React.useMemo(
       () =>
         createTheme({

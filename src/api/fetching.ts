@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { Place, Weather } from "./types";
 
+//get a place by id
 export const getPlace = async ({ id }: { id: string }) => {
     const place = await axios.get<Place>(
         `http://localhost:3000/api/place/${id}`,
@@ -9,6 +10,7 @@ export const getPlace = async ({ id }: { id: string }) => {
     return place.data;
 };
 
+//add a place 
 export const addPlcae = async (args: Place) => {
     const newPlace = await axios.post<Place>(
         `http://localhost:3000/api/place/`, {
@@ -17,8 +19,11 @@ export const addPlcae = async (args: Place) => {
     );
     return newPlace.data;
 };
-export const getWeather = async () => {
+
+
+//get weather by api token
+export const getWeather = async ({ x, y }: { x: number, y: number }) => {
     const weather = await axios.get<Weather>(
-        `https://api.openweathermap.org/data/2.5/weather?lat=10&lon=32&appid=${process.env.OPEN_WEATHE_MAP_TOCKEN}`);
+        `http://localhost:3000/api/weather/${x}/${y}`);
     return weather.data;
 };

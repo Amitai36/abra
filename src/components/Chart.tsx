@@ -1,36 +1,48 @@
 import Plot from "react-plotly.js"
 
-function Chart() {
+import { Weather } from "../api/types"
+import { useGetWeather } from "../api/usePlace"
+import { Typography } from "@mui/material"
+
+
+interface ChartProps {
+    x: number,
+    y: number
+}
+
+//create chart using plotly.js with react
+function Chart(props: ChartProps) {
+    const {  x, y } = props
+    const {data, isLoading} = useGetWeather({x, y})
+    if(isLoading)
+    {
+        return <Typography component="h1">Loaiding</Typography>
+    }
+    if(!data)
+    {
+        return <Typography component="h1">NO DATA</Typography>
+    }
     return (
         <div>
             <Plot
                 data={[
                     {
-                        x: [1, 2, 3, 4, 6, 8, 10, 12, 14, 16, 18],
-                        y: [32, 37, 40.5, 43, 49, 54, 59, 63.5, 69.5, 73, 74],
+                        x: [new Date()],
+                        y: [data.main.pressure],
                         mode: "markers",
                         type: "scatter",
-                        name: "Boys",
-                    },
-                    {
-                        x: [1, 2, 3, 4, 6, 8, 10, 12, 14, 16, 18],
-                        y: [30, 36, 39, 42, 48, 53, 58, 62, 67.5, 68, 68.5],
-                        mode: "lines+markers",
-                        type: "scatter",
-                        name: "Girls",
-                        marker: { color: "red" },
+                        name: "weather chart",
                     },
                 ]}
                 layout={{
                     title: "Growth Rate in Children",
                     xaxis: {
-                        title: "Age (years)",
+                        title: "Date",
+                        type: "date"
                     },
                     yaxis: {
-                        title: "Height (inches)",
+                        title: "pressure",
                     },
-                    width: 600,
-                    height: 500,
                 }}
             />
         </div>

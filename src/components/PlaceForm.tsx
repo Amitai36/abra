@@ -6,18 +6,24 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { placeSchema, typeOption } from "../modules/zodSchema";
 import SelectComponent from "./SelectComponent";
 import { useAddPlace } from "../api/usePlace";
+import { toast } from "react-toastify";
 
+
+//use zod to take type of the schema
 type FormSchema = z.infer<typeof placeSchema>;
 const optionType = typeOption
 
-
+//create a form to the open dialog
 function PlaceForm() {
     const { register, formState: { errors }, control, handleSubmit } = useForm<FormSchema>({
         resolver: zodResolver(placeSchema)
     })
+//mutate add place req post
     const { mutate, isLoading } = useAddPlace()
     const onSubmit: SubmitHandler<FormSchema> = (event) => {
-        mutate({ ...event, _id: "ami" })
+        mutate({ ...event,  }, {onSuccess:()=>{
+            toast("there is new place :)")
+        }})
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

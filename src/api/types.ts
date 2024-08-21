@@ -1,10 +1,12 @@
+//types of Place
 export interface Place{
     Name:String,
-    _id:string,
+    _id?:string,
     Type:string,
     Address:string
 }
 
+//types of weather
 export interface Weather{
         "coord": {
           "lon":number,

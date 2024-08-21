@@ -7,7 +7,7 @@ interface SelectComponentProps {
     formColor: FormControlOwnProps["color"]
 }
 
-
+//create generic select using mui here 
 const SelectComponent = (props: SelectComponentProps & SelectProps) => {
     const { lable, formColor, option, ...other } = props
 

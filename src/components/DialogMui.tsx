@@ -15,7 +15,7 @@ interface DialogComponentProps {
     title: { text: string; color: string };
     whenClose?: () => void;
 }
-
+//create a generic dialog component using mui
 export default function DialogComponent(props: DialogComponentProps) {
     const {
         content,
@@ -26,7 +26,7 @@ export default function DialogComponent(props: DialogComponentProps) {
     } = props;
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down("md"));//for responsive
-
+//what will hppend w
     const handleClose = () => {
         setOpen?.(false);
         whenClose?.();

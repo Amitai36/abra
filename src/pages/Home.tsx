@@ -2,8 +2,11 @@ import { useState } from "react"
 import { Add } from "@mui/icons-material"
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material"
 import Place from "./Place"
+import MapComponent from "../components/Map"
 
 function Home() {
+
+    //create state to open add dialog place 
     const [openAddPlace, setOpenAddPlace] = useState(false)
 
 
@@ -15,9 +18,9 @@ function Home() {
                     <IconButton sx={{ right: 0, position: "absolute" }} onClick={() => setOpenAddPlace(prev => !prev)}><Add /></IconButton>
                 </Toolbar>
             </AppBar>
-            {/* <div style={{ flexGrow: 1, overflow: 'auto', padding: 2 }}>
-                <DisplayJson />
-            </div> */}
+            <div style={{ flexGrow: 1, overflow: 'auto', padding: 2 }}>
+                <MapComponent />
+            </div>
             <Place openAddPlace={openAddPlace} setOpenAddPlace={setOpenAddPlace} />
         </div>
     )
