@@ -13,8 +13,13 @@ import { toast } from "react-toastify";
 type FormSchema = z.infer<typeof placeSchema>;
 const optionType = typeOption
 
+interface PlaceFormProps{
+    setOpenAddPlace: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 //create a form to the open dialog
-function PlaceForm() {
+function PlaceForm(props:PlaceFormProps) {
+    const {setOpenAddPlace} = props
     const { register, formState: { errors }, control, handleSubmit } = useForm<FormSchema>({
         resolver: zodResolver(placeSchema)
     })
@@ -22,7 +27,8 @@ function PlaceForm() {
     const { mutate, isLoading } = useAddPlace()
     const onSubmit: SubmitHandler<FormSchema> = (event) => {
         mutate({ ...event,  }, {onSuccess:()=>{
-            toast("there is new place :)")
+            toast.success("there is new place :)")
+            setOpenAddPlace(prev=>!prev)
         }})
     }
     return (

@@ -10,7 +10,7 @@ function Place(props:PlaceProps) {
     const {openAddPlace, setOpenAddPlace} = props
     return (
             <DialogComponent setOpen={setOpenAddPlace} content={
-                <PlaceForm />
+                <PlaceForm setOpenAddPlace={setOpenAddPlace} />
             } open={openAddPlace} title={{ text: "Add a place", color: "info" }}  >
             </DialogComponent>
     )
