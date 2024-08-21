@@ -1,6 +1,6 @@
 import Map from "@arcgis/core/Map";
-import { Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { Grid, Typography } from "@mui/material";
 import MapView from "@arcgis/core/views/MapView";
 import Search from "@arcgis/core/widgets/Search"
 
