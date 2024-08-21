@@ -1,11 +1,11 @@
+import Map from "./components/Map"
 import Home from "./pages/Home"
 
 function App() {
-
   return (
-    <>
-    <Home/>
-    </>
+    <div style={{ height: "100vh", width: "100vw" }}>
+      <Map />
+    </div>
   )
 }
 
