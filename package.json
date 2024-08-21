@@ -16,6 +16,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
+    "@types/react-plotly.js": "^2.6.3",
     "axios": "^1.7.4",
     "babel-polyfill": "^6.26.0",
     "dotenv": "^16.4.5",
