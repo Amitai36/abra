@@ -1,7 +1,6 @@
 import axios from "axios";
 
-import { Place } from "./types";
-
+import { Place, Weather } from "./types";
 
 export const getPlace = async ({ id }: { id: string }) => {
     const place = await axios.get<Place>(
@@ -17,4 +16,9 @@ export const addPlcae = async (args: Place) => {
     }
     );
     return newPlace.data;
+};
+export const getWeather = async () => {
+    const weather = await axios.get<Weather>(
+        `https://api.openweathermap.org/data/2.5/weather?lat=10&lon=32&appid=${process.env.OPEN_WEATHE_MAP_TOCKEN}`);
+    return weather.data;
 };

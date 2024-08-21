@@ -1,9 +1,9 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
-import {addPlcae, getPlace} from "./fetching";
+import { addPlcae, getPlace, getWeather } from "./fetching";
 
 export const useGetPlace = ({ id }: { id: string }) => {
-  return useQuery(["place"], ()=>getPlace({id}))
+  return useQuery(["place"], () => getPlace({ id }))
 };
 
 export const useAddPlace = () => {
@@ -13,4 +13,8 @@ export const useAddPlace = () => {
       queryClient.invalidateQueries(["place"]);
     }
   })
+};
+
+export const useGetWeather = () => {
+  return useQuery(["weather"],  getWeather)
 };

@@ -35,6 +35,10 @@ function MapComponent() {
       container: "mapDiv",
       zoom: 3,
     });
+    view.on("click", (event)=>{
+      console.log(event.x)
+      console.log(event.y)
+    })
     view.when(async () => {
       const searchWidget = new Search({
         view,

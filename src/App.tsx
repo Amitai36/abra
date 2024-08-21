@@ -1,11 +1,14 @@
+import { useGetWeather } from "./api/usePlace"
 import Map from "./components/Map"
-import Home from "./pages/Home"
+import MuiProviderTheme from "./theme/MuiThemeProvider"
 
 function App() {
+  const {data} = useGetWeather()
+  console.log(data)
   return (
-    <div style={{ height: "100vh", width: "100vw" }}>
+    <MuiProviderTheme>
       <Map />
-    </div>
+    </MuiProviderTheme>
   )
 }
 
