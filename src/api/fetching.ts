@@ -1,11 +1,11 @@
 import axios from "axios";
 
-import { Place, Weather } from "./types";
+import { FilteringType, Place, Weather } from "./types";
 
 //get a place by id
-export const getPlace = async ({ id }: { id: string }) => {
-    const place = await axios.get<Place>(
-        `http://localhost:3000/api/place/${id}`,
+export const getPlace = async ({ filter }: { filter:FilteringType }) => {
+    const place = await axios.get<Place[]>(
+        `http://localhost:3000/api/place/${filter}`,
     );
     return place.data;
 };

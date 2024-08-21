@@ -1,11 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 import { addPlcae, getPlace, getWeather } from "./fetching";
+import { FilteringType } from "./types";
 
 
 //using react-query with key of palce to get a place
-export const useGetPlace = ({ id }: { id: string }) => {
-  return useQuery(["place"], () => getPlace({ id }))
+export const useGetPlace = ({ filter }: { filter: FilteringType }) => {
+  return useQuery(["place"], () => getPlace({ filter }))
 };
 
 //using react-query with key of palce to add a place

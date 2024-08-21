@@ -56,3 +56,7 @@ export interface Weather{
         "name": string,
         "cod": number
 }
+
+//types of filtering
+
+export type FilteringType =  "Restaurant"|"Hotle"|"Park"|"all"
