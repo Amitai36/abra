@@ -1,10 +1,10 @@
-import Place from "./pages/Place"
+import Home from "./pages/Home"
 
 function App() {
 
   return (
     <>
-    <Place/>
+    <Home/>
     </>
   )
 }

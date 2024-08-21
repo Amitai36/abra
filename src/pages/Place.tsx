@@ -1,9 +1,13 @@
-import { useState } from "react"
 import DialogComponent from "../components/DialogMui"
 import PlaceForm from "../components/PlaceForm"
 
-function Place() {
-    const [openAddPlace, setOpenAddPlace] = useState(true)
+interface PlaceProps {
+    setOpenAddPlace: React.Dispatch<React.SetStateAction<boolean>>
+    openAddPlace: boolean
+}
+
+function Place(props:PlaceProps) {
+    const {openAddPlace, setOpenAddPlace} = props
     return (
         <div>
             <DialogComponent setOpen={setOpenAddPlace} content={
