@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Button, Grid, TextField, Typography } from "@mui/material"
+import { Button, CircularProgress, Grid, TextField, Typography } from "@mui/material"
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
@@ -15,19 +15,19 @@ function PlaceForm() {
     const { register, formState: { errors }, control, handleSubmit } = useForm<FormSchema>({
         resolver: zodResolver(placeSchema)
     })
-    const { mutate } = useAddPlace()
+    const { mutate, isLoading } = useAddPlace()
     const onSubmit: SubmitHandler<FormSchema> = (event) => {
-        mutate({...event, _id:"ami"})
+        mutate({ ...event, _id: "ami" })
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={2} textAlign={"center"}>
                 <Grid item xs={12}>
-                    <TextField {...register("Name", { required: true })} label={"Name"} color={errors.Name && "error"} />
+                    <TextField fullWidth {...register("Name", { required: true })} label={"Name"} color={errors.Name && "error"} />
                     {errors.Name && <Typography color={"red"}>{errors.Name.message}</Typography>}
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField color={errors.Address && "error"} {...register("Address", { required: true })} label={"Address"} />
+                    <TextField fullWidth color={errors.Address && "error"} {...register("Address", { required: true })} label={"Address"} />
                     {errors.Address && <Typography color={"red"}>{errors.Address.message}</Typography>}
                 </Grid>
                 <Grid item xs={12}>
@@ -47,8 +47,8 @@ function PlaceForm() {
                     />
                     {errors.Type && <Typography color={"red"}>{errors.Type.message}</Typography>}
                 </Grid>
-                <Grid>
-                    <Button type="submit">Submit</Button>
+                <Grid xs={12} item>
+                    {isLoading?<CircularProgress disableShrink />:<Button variant="contained" type="submit">Submit</Button>}
                 </Grid>
             </Grid>
         </form>
